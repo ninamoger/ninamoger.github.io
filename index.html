@@ -4,17 +4,45 @@
   <meta charset="UTF-8">
   <title>My Magical Page</title>
   <style>
-    html, body { height: 100%; margin: 0; overflow: hidden; }
+    /* full-screen, no scrollbars */
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* animated purple ↔ pink gradient */
     body {
-      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15);
-      background-size: 800% 800%;
-      animation: gradientShift 20s ease infinite;
+      background: linear-gradient(270deg, #8a2be2, #ff69b4, #8a2be2);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
     }
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0%   { background-position:   0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position:   0% 50%; }
     }
+
+    /* glitter layer via repeating tiny dots */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      background: radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px)
+                  0 0 / 20px 20px;
+      animation: sparkle 3s linear infinite;
+      opacity: 0.6;
+    }
+    @keyframes sparkle {
+      0%   { background-position:   0  0; opacity: 0.5; }
+      50%  { background-position:  10px 10px; opacity: 0.8; }
+      100% { background-position:   0  0; opacity: 0.5; }
+    }
+
+    /* your centered text */
     h1 {
       position: absolute;
       top: 50%; left: 50%;
@@ -25,10 +53,13 @@
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
       text-align: center;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <h1>YOUR TEXT HERE</h1>
+  <h1>nina and seb</h1>
+  <h1>copenhagen</h1>
+  <h1>26.06.2026</h1>
 </body>
 </html>
