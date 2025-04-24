@@ -16,7 +16,7 @@
       margin: 0;
       overflow: hidden;
       position: relative;
-      background: #000;
+      background: #f0f0f0;
     }
 
     /* blobs for lava-lamp effect */
@@ -27,26 +27,26 @@
       filter: blur(150px);
       opacity: 0.8;
       mix-blend-mode: screen;
-    }
-    .blob1 { background: #8a2be2; top: 10%; left: -20%; animation: move1 25s ease-in-out infinite; }
-    .blob2 { background: #ff69b4; top: -10%; left: 40%; animation: move2 30s ease-in-out infinite; }
-    .blob3 { background: #da70d6; top: 50%; left: -10%; animation: move3 35s ease-in-out infinite; }
+      
+.blob1 { background: #8a2be2; top: 10%; left: -20%; animation: move1 22.5s ease-in-out infinite; }  /* 25s → 22.5s */
+.blob2 { background: #ff69b4; top: -10%; left: 40%; animation: move2 27s   ease-in-out infinite; }  /* 30s → 27s */
+.blob3 { background: #da70d6; top: 50%; left: -10%; animation: move3 31.5s ease-in-out infinite; }  /* 35s → 31.5s */
 
-    @keyframes move1 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(50vw, 60vh); }
-      100% { transform: translate(0,0); }
-    }
-    @keyframes move2 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(-60vw, 40vh); }
-      100% { transform: translate(0,0); }
-    }
-    @keyframes move3 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(40vw, -50vh); }
-      100% { transform: translate(0,0); }
-    }
+@keyframes move1 {
+  0%   { transform: translate(0,0); }
+  50%  { transform: translate(50vw, 60vh); }
+  100% { transform: translate(0,0); }
+}
+@keyframes move2 {
+  0%   { transform: translate(0,0); }
+  50%  { transform: translate(-60vw, 40vh); }
+  100% { transform: translate(0,0); }
+}
+@keyframes move3 {
+  0%   { transform: translate(0,0); }
+  50%  { transform: translate(40vw, -50vh); }
+  100% { transform: translate(0,0); }
+}
 
     /* two star-field layers, twinkling */
     body::before,
@@ -109,8 +109,8 @@
       margin: 0;
       font-family: 'Homenaje', serif;
       font-size: 2.5em;
-      color: white;
-      text-shadow: 0 0 10px rgba(0,0,0,0.4);
+  color: #333;                      /* was white, now dark gray */
+  text-shadow: 0 0 10px rgba(255,255,255,0.4); /* soft light glow */
     }
   </style>
 </head>
