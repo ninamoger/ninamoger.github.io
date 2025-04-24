@@ -66,50 +66,43 @@
     
     .blob1 {
       background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
-      top: 10%; left: -20%;
-      animation: move1 25s ease-in-out infinite;
+      top: 20%; left: 20%;
+      animation: move1 50s ease-in-out infinite;
     }
     .blob2 {
       background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%);
-      top: -10%; left: 40%;
-      animation: move2 30s ease-in-out infinite;
+      top: 25%; left: 65%;
+      animation: move2 80s ease-in-out infinite;
     }
     .blob3 {
       background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%);
-      top: 50%; left: -10%;
-      animation: move3 35s ease-in-out infinite;
+      top: 60%; left: 40%;
+      animation: move3 100s ease-in-out infinite;
     }
 
 /* blob1 – zigzags around */
 @keyframes move1 {
-  0%   { transform: translate(0,0) scale(1,1); }
-  20%  { transform: translate(20vw, 10vh) scale(1.1, 0.9); }
-  40%  { transform: translate(-30vw, 30vh) scale(0.9, 1.1); }
-  60%  { transform: translate(40vw, -20vh) scale(1.05, 0.95); }
-  80%  { transform: translate(-10vw, 50vh) scale(0.95, 1.05); }
-  100% { transform: translate(0,0) scale(1,1); }
+  0%   { transform: translate(  0,   0) scale(1,1); }
+  25%  { transform: translate( 15vw,  5vh) scale(1.1,0.9); }
+  50%  { transform: translate(-15vw, 10vh) scale(0.9,1.1); }
+  75%  { transform: translate( 10vw, -5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
 }
 
-/* blob2 – more loops */
 @keyframes move2 {
-  0%   { transform: translate(0,0) scale(1,1); }
-  15%  { transform: translate(-25vw, -15vh) scale(1.1, 0.9); }
-  30%  { transform: translate(25vw, 25vh)  scale(0.9, 1.1); }
-  50%  { transform: translate(-35vw, 35vh) scale(1.05, 0.95); }
-  70%  { transform: translate(35vw, -25vh) scale(0.95, 1.05); }
-  85%  { transform: translate(-15vw, 15vh) scale(1.02, 0.98); }
-  100% { transform: translate(0,0) scale(1,1); }
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate(-20vw, 10vh) scale(1.1,0.9); }
+  50%  { transform: translate( 20vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate(-15vw,  5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
 }
 
-/* blob3 – broad arcs */
 @keyframes move3 {
-  0%   { transform: translate(0,0) scale(1,1); }
-  10%  { transform: translate(30vw, -30vh) scale(1.1, 0.9); }
-  25%  { transform: translate(-20vw, 20vh) scale(0.9, 1.1); }
-  45%  { transform: translate(50vw, 50vh)  scale(1,   1); }
-  65%  { transform: translate(-40vw, -40vh) scale(1.05, 0.95); }
-  85%  { transform: translate(10vw, 40vh)   scale(0.95, 1.05); }
-  100% { transform: translate(0,0) scale(1,1); }
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate( 10vw, 15vh) scale(1.1,0.9); }
+  50%  { transform: translate(-10vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
 }
 
     /* two star-field layers, twinkling */
