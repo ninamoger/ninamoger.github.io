@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Nina and Seb 2026</title>
 
   <!-- Homenaje font -->
@@ -11,174 +11,195 @@
   />
 
   <style>
+    /* lamp-interior gradient for depth */
     html, body {
       height: 100%;
       margin: 0;
       overflow: hidden;
+      position: relative;
       background: radial-gradient(
         circle at 50% 40%,
         #111 0%,
         #000 60%,
         #000 100%
       );
-      position: relative;
     }
 
-    /* goo filter SVG is injected via JS */
-
-    .blob {
-      position: absolute;
-      width: 200px;   /* smaller blobs for better collision */
-      height: 200px;
-      margin: -100px; /* center at x,y */
-      border-radius: 50%;
-      filter: url(#goo);
-      opacity: 1;
-      box-shadow:
-        inset 0 0 60px rgba(0,0,0,0.4),
-        0 0 20px rgba(0,0,0,0.2);
-      mix-blend-mode: normal;
-      overflow: hidden;
-      will-change: transform, left, top;
-    }
-
-    .blob1 { background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%); }
-    .blob2 { background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%); }
-    .blob3 { background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%); }
-
-    /* internal noise */
-    .blob::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-
+    /* soft gloss/reflection overlay */
     .gloss {
-      position: absolute; top: 0; left: 0;
+      position: absolute;
+      top: 0; left: 0;
       width: 100%; height: 100%;
       pointer-events: none;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+      z-index: 3;
+      background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255,255,255,0.15) 0%,
+        transparent 60%
+      );
       mix-blend-mode: overlay;
       animation: sheen 6s ease-in-out infinite;
-      z-index: 3;
     }
     @keyframes sheen {
-      0%,100% { transform: translate(-40px,-40px) scale(1); opacity:0.2 }
-      50%     { transform: translate(40px,40px)   scale(1.2); opacity:0.05 }
+      0%, 100% {
+        transform: translate(-40px, -40px) scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translate(40px, 40px) scale(1.2);
+        opacity: 0.05;
+      }
     }
 
-    /* starfield unchanged */
-    body::before, body::after { /* … your existing starfield rules … */ }
+    /* blobs for lava-lamp effect */
+    .blob {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 1;
+      mix-blend-mode: normal;
+      box-shadow:
+        inset 0 0 60px rgba(0,0,0,0.4),   /* depth around edges */
+        0 0 20px rgba(0,0,0,0.2);         /* slight grounding shadow */ 
+    }
+    
+    .blob1 {
+      background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
+      top: 20%; left: 20%;
+      animation: move1 50s ease-in-out infinite;
+    }
+    .blob2 {
+      background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%);
+      top: 25%; left: 65%;
+      animation: move2 80s ease-in-out infinite;
+    }
+    .blob3 {
+      background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%);
+      top: 60%; left: 40%;
+      animation: move3 100s ease-in-out infinite;
+    }
 
-    .save-date, .text-container { z-index: 4; }
-    .save-date { position:absolute; top:25%; left:50%; transform:translate(-50%,-50%); font: italic 100 1.2em 'Homenaje'; color:#fff; opacity:0.9; }
+/* blob1 – zigzags around */
+@keyframes move1 {
+  0%   { transform: translate(  0,   0) scale(1,1); }
+  25%  { transform: translate( 15vw,  5vh) scale(1.1,0.9); }
+  50%  { transform: translate(-15vw, 10vh) scale(0.9,1.1); }
+  75%  { transform: translate( 10vw, -5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+@keyframes move2 {
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate(-20vw, 10vh) scale(1.1,0.9); }
+  50%  { transform: translate( 20vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate(-15vw,  5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+@keyframes move3 {
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate( 10vw, 15vh) scale(1.1,0.9); }
+  50%  { transform: translate(-10vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+    /* two star-field layers, twinkling */
+    body::before,
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 1px; height: 1px;
+      background: transparent;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      box-shadow:
+        100px 150px #fff, 200px 300px #fff, 350px  50px #fff,
+        600px 400px #fff, 800px 200px #fff,1000px 600px #fff,
+       1200px 100px #fff,1400px 500px #fff,1600px 300px #fff,
+       1800px 700px #fff,  400px 800px #fff,  50px 900px #fff,
+        500px1000px #fff, 700px 950px #fff, 900px 100px #fff,
+       1100px400px #fff,1300px900px #fff,1500px 50px #fff,
+       1700px850px #fff,1900px200px #fff;
+      animation: twinkle1 4s ease-in-out infinite alternate;
+      opacity: 0.7;
+    }
+    body::after {
+      box-shadow:
+         150px 100px #fff,  300px 250px #fff,  450px  80px #fff,
+         700px 350px #fff,  900px 180px #fff, 1100px 550px #fff,
+        1300px  90px #fff, 1500px 480px #fff, 1700px 260px #fff,
+        1900px 720px #fff,  550px 820px #fff,  250px 920px #fff,
+         650px1020px #fff, 850px 970px #fff,1050px 120px #fff,
+        1250px420px #fff,1450px920px #fff,1650px  70px #fff,
+        1850px870px #fff,  950px220px #fff;
+      animation: twinkle2 5s ease-in-out infinite alternate;
+      opacity: 0.5;
+    }
+    @keyframes twinkle1 {
+      0%   { opacity: 0.3; }
+      50%  { opacity: 0.8; }
+      100% { opacity: 0.3; }
+    }
+    @keyframes twinkle2 {
+      0%   { opacity: 0.5; }
+      50%  { opacity: 0.2; }
+      100% { opacity: 0.5; }
+    }
+
+    /* "save the date" line */
+    .save-date {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Homenaje', serif;
+      font-style: italic;
+      font-weight: 100;
+      font-size: 1.2em;
+      color: white;
+      opacity: 0.9;
+      z-index: 2;
+    }
+
+    /* center & stack your main text */
     .text-container {
-      position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-      display:flex; flex-direction:column; align-items:center; gap:.3em;
-      font-family:'Homenaje', serif; color:#fff; text-shadow:0 0 10px rgba(0,0,0,0.4);
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+      z-index: 2;
+    }
+    .text-container h1 {
+      margin: 0;
+      font-family: 'Homenaje', serif;
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
   </style>
 </head>
 <body>
-  <!-- SVG goo filter: -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;pointer-events:none">
-    <defs>
-      <filter id="goo" filterUnits="userSpaceOnUse" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
-        <feColorMatrix in="blur" mode="matrix"
-          values="1 0 0 0 0   0 1 0 0 0   0 0 1 0 0   0 0 0 20 -10"
-          result="goo"/>
-        <feBlend in="SourceGraphic" in2="goo"/>
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- Blobs -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
   <div class="gloss"></div>
+
   <div class="save-date">save the date</div>
+
   <div class="text-container">
     <h1>nina and seb</h1>
     <h1>copenhagen</h1>
     <h1>27.06.2026</h1>
   </div>
-
-  <script>
-    // Simple “waxy” physics loop
-    const blobs = Array.from(document.querySelectorAll('.blob'));
-    const state = blobs.map((el, i) => {
-      const speed = 0.02;  // adjust for pace
-      return {
-        el,
-        size: el.offsetWidth,
-        x: Math.random()*(window.innerWidth - el.offsetWidth) + el.offsetWidth/2,
-        y: Math.random()*(window.innerHeight - el.offsetHeight) + el.offsetHeight/2,
-        vx: (Math.random()*2-1)*speed*window.innerWidth,
-        vy: (Math.random()*2-1)*speed*window.innerHeight,
-      };
-    });
-
-    function update() {
-      const dt = 1/60;
-      // move & wall bounce
-      state.forEach(obj => {
-        obj.x += obj.vx*dt;
-        obj.y += obj.vy*dt;
-        // walls
-        if (obj.x < obj.size/2 || obj.x > window.innerWidth - obj.size/2) {
-          obj.vx *= -1;
-          squash(obj, 'x');
-        }
-        if (obj.y < obj.size/2 || obj.y > window.innerHeight - obj.size/2) {
-          obj.vy *= -1;
-          squash(obj, 'y');
-        }
-      });
-      // blob–blob collisions
-      for (let i=0; i<state.length; i++){
-        for (let j=i+1; j<state.length; j++){
-          const A = state[i], B = state[j];
-          const dx = B.x - A.x, dy = B.y - A.y;
-          const dist = Math.hypot(dx,dy);
-          if (dist < (A.size+ B.size)/2) {
-            // swap velocities
-            [A.vx, B.vx] = [B.vx, A.vx];
-            [A.vy, B.vy] = [B.vy, A.vy];
-            squash(A, 'collision');
-            squash(B, 'collision');
-          }
-        }
-      }
-      // apply positions
-      state.forEach(obj => {
-        obj.el.style.left = obj.x + 'px';
-        obj.el.style.top  = obj.y + 'px';
-      });
-      requestAnimationFrame(update);
-    }
-
-    function squash(obj, axis) {
-      // apply quick squash/stretch transform
-      const el = obj.el;
-      const s1 = axis==='y' ? [1.2,0.8] : [0.8,1.2];
-      const scaleX = axis==='collision' ? 1.1 : s1[0];
-      const scaleY = axis==='collision' ? 0.9 : s1[1];
-      el.style.transition = 'transform 0.2s ease-out';
-      el.style.transform = `scale(${scaleX},${scaleY})`;
-      // then spring back
-      setTimeout(() => {
-        el.style.transform = 'scale(1,1)';
-      }, 200);
-    }
-
-    window.addEventListener('resize', () => location.reload());
-    requestAnimationFrame(update);
-  </script>
 </body>
 </html>
