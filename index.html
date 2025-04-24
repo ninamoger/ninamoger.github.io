@@ -65,37 +65,29 @@
     }
     
 .blob1 {
-  /* warm orange */
   background: radial-gradient(
     circle at 30% 30%,
-    #f39c12 0%,   /* bright, sunny orange */
-    #d35400 70%   /* deeper burnt orange */
+    #ff4500 0%,   /* bright orange core */
+    #b22222 70%   /* deep red edge */
   );
-  top: 20%; left: 20%;
-  animation: move1 40s ease-in-out infinite, wobble 8s ease-in-out infinite;
 }
 
 .blob2 {
-  /* cool teal */
   background: radial-gradient(
     circle at 30% 30%,
-    #1abc9c 0%,   /* fresh turqoise */
-    #16a085 70%   /* a bit darker, muted */
+    #ff8c00 0%,   /* medium orange core */
+    #ff4500 70%   /* bright orange edge */
   );
-  top: 25%; left: 65%;
-  animation: move2 60s ease-in-out infinite, wobble 10s ease-in-out infinite;
 }
 
 .blob3 {
-  /* soft purple */
   background: radial-gradient(
     circle at 30% 30%,
-    #9b59b6 0%,   /* gentle orchid */
-    #8e44ad 70%   /* deeper violet */
+    #ffa07a 0%,   /* light salmon core */
+    #ff6347 70%   /* tomato red edge */
   );
-  top: 60%; left: 40%;
-  animation: move3 80s ease-in-out infinite, wobble 15s ease-in-out infinite;
 }
+
 
 /* blob1 – zigzags around */
 @keyframes move1 {
