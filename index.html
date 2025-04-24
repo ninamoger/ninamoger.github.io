@@ -94,7 +94,22 @@
       100% { opacity: 0.5; }
     }
 
-    /* center & stack your text */
+    /* "save the date" line, halfway above main text */
+    .save-date {
+      position: absolute;
+      top: 25%;                             /* halfway between 0% and 50% */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Homenaje', serif;
+      font-style: italic;
+      font-weight: 100;                     /* very thin */
+      font-size: 1.2em;                     /* adjust if needed */
+      color: white;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    /* center & stack your main text */
     .text-container {
       position: absolute;
       top: 50%; left: 50%;
@@ -118,6 +133,8 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
+
+  <div class="save-date">save the date</div>
 
   <div class="text-container">
     <h1>nina and seb</h1>
