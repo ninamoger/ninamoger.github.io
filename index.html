@@ -76,20 +76,28 @@
       top: 50%; left: -10%;
       animation: move3 35s ease-in-out infinite;
     }
+
+    /* enhanced blob movement with squash & stretch */
     @keyframes move1 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(50vw, 60vh); }
-      100% { transform: translate(0,0); }
+      0%   { transform: translate(0,0) scale(1,1); }
+      20%  { transform: translate(10vw, 12vh) scale(1.2, 0.8); }
+      50%  { transform: translate(50vw, 60vh) scale(1,1); }
+      80%  { transform: translate(10vw, 12vh) scale(0.8, 1.2); }
+      100% { transform: translate(0,0) scale(1,1); }
     }
     @keyframes move2 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(-60vw, 40vh); }
-      100% { transform: translate(0,0); }
+      0%   { transform: translate(0,0) scale(1,1); }
+      20%  { transform: translate(-12vw, 8vh) scale(1.2, 0.8); }
+      50%  { transform: translate(-60vw, 40vh) scale(1,1); }
+      80%  { transform: translate(-12vw, 8vh) scale(0.8, 1.2); }
+      100% { transform: translate(0,0) scale(1,1); }
     }
     @keyframes move3 {
-      0%   { transform: translate(0,0); }
-      50%  { transform: translate(40vw, -50vh); }
-      100% { transform: translate(0,0); }
+      0%   { transform: translate(0,0) scale(1,1); }
+      20%  { transform: translate(8vw, -10vh) scale(1.2, 0.8); }
+      50%  { transform: translate(40vw, -50vh) scale(1,1); }
+      80%  { transform: translate(8vw, -10vh) scale(0.8, 1.2); }
+      100% { transform: translate(0,0) scale(1,1); }
     }
 
     /* two star-field layers, twinkling */
