@@ -1,23 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Nina and Seb 2026</title>
 
   <!-- Homenaje font -->
-  <link href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Homenaje&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    /* lamp‐interior gradient for depth */
+    /* lamp-interior gradient for depth */
     html, body {
       height: 100%;
       margin: 0;
       overflow: hidden;
       position: relative;
-      background: radial-gradient(circle at 50% 40%, #111 0%, #000 60%, #000 100%);
+      background: radial-gradient(
+        circle at 50% 40%,
+        #111 0%,
+        #000 60%,
+        #000 100%
+      );
     }
 
-    /* two star‐field layers, twinkling */
+    /* soft gloss/reflection overlay */
+    .gloss {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255,255,255,0.15) 0%,
+        transparent 60%
+      );
+      mix-blend-mode: overlay;
+      animation: sheen 6s ease-in-out infinite;
+    }
+    @keyframes sheen {
+      0%, 100% {
+        transform: translate(-40px, -40px) scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translate(40px, 40px) scale(1.2);
+        opacity: 0.05;
+      }
+    }
+
+    /* blobs for lava-lamp effect */
+    .blob {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 1;
+      mix-blend-mode: normal;
+      box-shadow:
+        inset 0 0 60px rgba(0,0,0,0.4),   /* depth around edges */
+        0 0 20px rgba(0,0,0,0.2);         /* slight grounding shadow */ 
+    }
+    
+    .blob1 {
+      background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
+      top: 20%; left: 20%;
+      animation: move1 50s ease-in-out infinite;
+    }
+    .blob2 {
+      background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%);
+      top: 25%; left: 65%;
+      animation: move2 80s ease-in-out infinite;
+    }
+    .blob3 {
+      background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%);
+      top: 60%; left: 40%;
+      animation: move3 100s ease-in-out infinite;
+    }
+
+/* blob1 – zigzags around */
+@keyframes move1 {
+  0%   { transform: translate(  0,   0) scale(1,1); }
+  25%  { transform: translate( 15vw,  5vh) scale(1.1,0.9); }
+  50%  { transform: translate(-15vw, 10vh) scale(0.9,1.1); }
+  75%  { transform: translate( 10vw, -5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+@keyframes move2 {
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate(-20vw, 10vh) scale(1.1,0.9); }
+  50%  { transform: translate( 20vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate(-15vw,  5vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+@keyframes move3 {
+  0%   { transform: translate(  0,    0) scale(1,1); }
+  25%  { transform: translate( 10vw, 15vh) scale(1.1,0.9); }
+  50%  { transform: translate(-10vw,-15vh) scale(0.9,1.1); }
+  75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
+  100% { transform: translate(  0,    0) scale(1,1); }
+}
+
+    /* two star-field layers, twinkling */
     body::before,
     body::after {
       content: '';
@@ -64,31 +152,22 @@
       100% { opacity: 0.5; }
     }
 
-    /* gloss highlight */
-    .gloss {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 2;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
-      mix-blend-mode: overlay;
-      animation: sheen 6s ease-in-out infinite;
-    }
-    @keyframes sheen {
-      0%,100% { transform: translate(-40px,-40px) scale(1); opacity:0.2; }
-      50%     { transform: translate(40px,40px)   scale(1.2); opacity:0.05; }
-    }
-
-    /* save‐the‐date and main text */
+    /* "save the date" line */
     .save-date {
       position: absolute;
-      top: 25%; left: 50%;
+      top: 25%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      font: italic 100 1.2em 'Homenaje';
+      font-family: 'Homenaje', serif;
+      font-style: italic;
+      font-weight: 100;
+      font-size: 1.2em;
       color: white;
       opacity: 0.9;
-      z-index: 3;
+      z-index: 2;
     }
+
+    /* center & stack your main text */
     .text-container {
       position: absolute;
       top: 50%; left: 50%;
@@ -97,7 +176,7 @@
       flex-direction: column;
       align-items: center;
       gap: 0.3em;
-      z-index: 3;
+      z-index: 2;
     }
     .text-container h1 {
       margin: 0;
@@ -106,165 +185,21 @@
       color: white;
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
-
-    /* blobs: big, blurred, gooey wax */
-    .blob {
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      filter: url(#goo);
-      opacity: 1;
-      box-shadow:
-        inset 0 0 60px rgba(0,0,0,0.4),
-        0 0 20px rgba(0,0,0,0.2);
-      mix-blend-mode: normal;
-      overflow: hidden;
-      will-change: left, top, transform;
-    }
-    .blob::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
-    .blob1 { background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%); }
-    .blob2 { background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%); }
-    .blob3 { background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%); }
-
-    /* squash animations */
-    @keyframes squashX {
-      0%,100% { transform: scale(1,1); }
-      50%     { transform: scale(0.8,1.2); }
-    }
-    .squashX {
-      animation: squashX 0.3s ease-out forwards;
-    }
-
-    @keyframes squashY {
-      0%,100% { transform: scale(1,1); }
-      50%     { transform: scale(1.2,0.8); }
-    }
-    .squashY {
-      animation: squashY 0.3s ease-out forwards;
-    }
-
-    @keyframes squashC {
-      0%,100% { transform: scale(1,1); }
-      50%     { transform: scale(1.1,0.9); }
-    }
-    .squashC {
-      animation: squashC 0.3s ease-out forwards;
-    }
   </style>
 </head>
 <body>
-  <!-- SVG goo filter -->
-  <svg xmlns="http://www.w3.org/2000/svg"
-       style="position:absolute; width:0; height:0; pointer-events:none">
-    <defs>
-      <filter id="goo" filterUnits="userSpaceOnUse" x="-25%" y="-25%" width="150%" height="150%">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
-        <feColorMatrix in="blur" mode="matrix"
-          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
-          result="goo"/>
-        <feBlend in="SourceGraphic" in2="goo"/>
-      </filter>
-    </defs>
-  </svg>
-
-  <!-- blobs -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
-  <!-- gloss, text -->
   <div class="gloss"></div>
+
   <div class="save-date">save the date</div>
+
   <div class="text-container">
     <h1>nina and seb</h1>
     <h1>copenhagen</h1>
     <h1>27.06.2026</h1>
   </div>
-
-  <script>
-    const blobs = Array.from(document.querySelectorAll('.blob'));
-    const state = blobs.map(el => ({
-      el,
-      r: 300, // half of 600px
-      x: Math.random()*(innerWidth - 600) + 300,
-      y: Math.random()*(innerHeight - 600) + 300,
-      vx: (Math.random()*2-1) * 0.5,
-      vy: (Math.random()*2-1) * 0.5
-    }));
-
-    function applySquash(el, cls) {
-      el.classList.add(cls);
-      el.addEventListener('animationend', () => el.classList.remove(cls), { once: true });
-    }
-
-    function update() {
-      // Move & wall‐bounce
-      state.forEach(o => {
-        o.x += o.vx;
-        o.y += o.vy;
-        if (o.x < o.r) {
-          o.x = o.r; o.vx *= -1;
-          applySquash(o.el, 'squashX');
-        } else if (o.x > innerWidth - o.r) {
-          o.x = innerWidth - o.r; o.vx *= -1;
-          applySquash(o.el, 'squashX');
-        }
-        if (o.y < o.r) {
-          o.y = o.r; o.vy *= -1;
-          applySquash(o.el, 'squashY');
-        } else if (o.y > innerHeight - o.r) {
-          o.y = innerHeight - o.r; o.vy *= -1;
-          applySquash(o.el, 'squashY');
-        }
-      });
-
-      // Blob–blob collisions
-      for (let i = 0; i < state.length; i++) {
-        for (let j = i + 1; j < state.length; j++) {
-          const A = state[i], B = state[j];
-          const dx = B.x - A.x, dy = B.y - A.y;
-          const dist = Math.hypot(dx, dy);
-          const minDist = A.r + B.r;
-          if (dist < minDist) {
-            // separate overlap
-            const overlap = (minDist - dist) / 2;
-            const nx = dx / dist, ny = dy / dist;
-            A.x -= nx * overlap;
-            A.y -= ny * overlap;
-            B.x += nx * overlap;
-            B.y += ny * overlap;
-            // relative velocity along normal
-            const dvx = A.vx - B.vx, dvy = A.vy - B.vy;
-            const dot = dvx * nx + dvy * ny;
-            if (dot > 0) {
-              A.vx -= dot * nx;
-              A.vy -= dot * ny;
-              B.vx += dot * nx;
-              B.vy += dot * ny;
-              applySquash(A.el, 'squashC');
-              applySquash(B.el, 'squashC');
-            }
-          }
-        }
-      }
-
-      // Apply positions
-      state.forEach(o => {
-        o.el.style.left = o.x + 'px';
-        o.el.style.top  = o.y + 'px';
-      });
-
-      requestAnimationFrame(update);
-    }
-
-    window.addEventListener('resize', () => location.reload());
-    requestAnimationFrame(update);
-  </script>
 </body>
 </html>
