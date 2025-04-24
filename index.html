@@ -56,11 +56,14 @@
       position: absolute;
       width: 600px; height: 600px;
       border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.9;
+      filter: blur(50px);
+      opacity: 1;
       mix-blend-mode: normal;
-      box-shadow: inset 0 0 60px rgba(0,0,0,0.4);
+      box-shadow:
+        inset 0 0 60px rgba(0,0,0,0.4),   /* depth around edges */
+        0 0 20px rgba(0,0,0,0.2);         /* slight grounding shadow */ 
     }
+    
     .blob1 {
       background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
       top: 10%; left: -20%;
