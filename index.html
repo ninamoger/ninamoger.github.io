@@ -64,21 +64,38 @@
         0 0 20px rgba(0,0,0,0.2);         /* slight grounding shadow */ 
     }
     
-    .blob1 {
-      background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
-      top: 20%; left: 20%;
-      animation: move1 50s ease-in-out infinite;
-    }
-    .blob2 {
-      background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%);
-      top: 25%; left: 65%;
-      animation: move2 80s ease-in-out infinite;
-    }
-    .blob3 {
-      background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%);
-      top: 60%; left: 40%;
-      animation: move3 100s ease-in-out infinite;
-    }
+.blob1 {
+  /* warm orange */
+  background: radial-gradient(
+    circle at 30% 30%,
+    #f39c12 0%,   /* bright, sunny orange */
+    #d35400 70%   /* deeper burnt orange */
+  );
+  top: 20%; left: 20%;
+  animation: move1 40s ease-in-out infinite, wobble 8s ease-in-out infinite;
+}
+
+.blob2 {
+  /* cool teal */
+  background: radial-gradient(
+    circle at 30% 30%,
+    #1abc9c 0%,   /* fresh turqoise */
+    #16a085 70%   /* a bit darker, muted */
+  );
+  top: 25%; left: 65%;
+  animation: move2 60s ease-in-out infinite, wobble 10s ease-in-out infinite;
+}
+
+.blob3 {
+  /* soft purple */
+  background: radial-gradient(
+    circle at 30% 30%,
+    #9b59b6 0%,   /* gentle orchid */
+    #8e44ad 70%   /* deeper violet */
+  );
+  top: 60%; left: 40%;
+  animation: move3 80s ease-in-out infinite, wobble 15s ease-in-out infinite;
+}
 
 /* blob1 – zigzags around */
 @keyframes move1 {
