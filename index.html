@@ -51,93 +51,62 @@
       }
     }
 
-    /* goo filter */
-<svg xmlns="http://www.w3.org/2000/svg"
-     style="position:absolute; width:0; height:0; pointer-events:none">
-  <defs>
-    <filter id="goo"
-            filterUnits="userSpaceOnUse"
-            x="-25%" y="-25%" width="150%" height="150%">
-      <feGaussianBlur in="SourceGraphic"
-                      stdDeviation="12"
-                      result="blur"/>
-      <feColorMatrix in="blur"
-                     mode="matrix"
-                     values="
-                       1 0 0 0 0
-                       0 1 0 0 0
-                       0 0 1 0 0
-                       0 0 0 20 -10
-                     "
-                     result="goo"/>
-      <feBlend in="SourceGraphic" in2="goo"/>
-    </filter>
-  </defs>
-</svg>
-
     /* blobs for lava-lamp effect */
     .blob {
       position: absolute;
       width: 600px; height: 600px;
       border-radius: 50%;
-    /* apply the goo filter only */
+
+      /* apply the goo filter only */
       filter: url(#goo);
 
-    /* make them solid, give depth */
+      /* make them solid, give depth */
       opacity: 1;
       box-shadow:
-      inset 0 0 60px rgba(0,0,0,0.4),
-      0 0 20px rgba(0,0,0,0.2);
+        inset 0 0 60px rgba(0,0,0,0.4),
+        0 0 20px rgba(0,0,0,0.2);
 
       mix-blend-mode: normal;
     }
-    
+
     .blob1 {
       background: radial-gradient(circle at 30% 30%, #ff4500 0%, #b22222 70%);
       top: 20%; left: 20%;
       animation: move1 40s ease-in-out infinite;
-      wobble 8s ease-in-out infinite;
-
     }
     .blob2 {
       background: radial-gradient(circle at 30% 30%, #ff8c00 0%, #ff4500 70%);
       top: 25%; left: 65%;
       animation: move2 60s ease-in-out infinite;
-      wobble 10s ease-in-out infinite;
-
     }
     .blob3 {
       background: radial-gradient(circle at 30% 30%, #ffa07a 0%, #ff6347 70%);
       top: 60%; left: 40%;
       animation: move3 80s ease-in-out infinite;
-      wobble 15s ease-in-out infinite;
-
     }
 
-/* blob1 – zigzags around */
-@keyframes move1 {
-  0%   { transform: translate(  0,   0) scale(1,1); }
-  25%  { transform: translate( 15vw,  5vh) scale(1.1,0.9); }
-  50%  { transform: translate(-15vw, 10vh) scale(0.9,1.1); }
-  75%  { transform: translate( 10vw, -5vh) scale(1.05,0.95); }
-  100% { transform: translate(  0,    0) scale(1,1); }
-}
-
-@keyframes move2 {
-  0%   { transform: translate(  0,    0) scale(1,1); }
-  25%  { transform: translate(-20vw, 10vh) scale(1.1,0.9); }
-  50%  { transform: translate( 20vw,-15vh) scale(0.9,1.1); }
-  75%  { transform: translate(-15vw,  5vh) scale(1.05,0.95); }
-  100% { transform: translate(  0,    0) scale(1,1); }
-}
-
-@keyframes move3 {
-  0%   { transform: translate(  0,    0) scale(1,1); }
-  25%  { transform: translate( 10vw, 15vh) scale(1.1,0.9); }
-  50%  { transform: translate(-10vw,-15vh) scale(0.9,1.1); }
-  75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
-  100% { transform: translate(  0,    0) scale(1,1); }
-}
+    /* enhanced blob movement paths */
+    @keyframes move1 {
+      0%   { transform: translate(  0,   0) scale(1,1); }
+      25%  { transform: translate( 15vw,  5vh) scale(1.1,0.9); }
+      50%  { transform: translate(-15vw, 10vh) scale(0.9,1.1); }
+      75%  { transform: translate( 10vw, -5vh) scale(1.05,0.95); }
+      100% { transform: translate(  0,    0) scale(1,1); }
+    }
+    @keyframes move2 {
+      0%   { transform: translate(  0,    0) scale(1,1); }
+      25%  { transform: translate(-20vw, 10vh) scale(1.1,0.9); }
+      50%  { transform: translate( 20vw,-15vh) scale(0.9,1.1); }
+      75%  { transform: translate(-15vw,  5vh) scale(1.05,0.95); }
+      100% { transform: translate(  0,    0) scale(1,1); }
+    }
+    @keyframes move3 {
+      0%   { transform: translate(  0,    0) scale(1,1); }
+      25%  { transform: translate( 10vw, 15vh) scale(1.1,0.9); }
+      50%  { transform: translate(-10vw,-15vh) scale(0.9,1.1); }
+      75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
+      100% { transform: translate(  0,    0) scale(1,1); }
+    }
 
     /* two star-field layers, twinkling */
     body::before,
@@ -222,12 +191,28 @@
   </style>
 </head>
 <body>
+  <!-- ── Place the SVG goo filter here, not inside <style> ── -->
+  <svg xmlns="http://www.w3.org/2000/svg"
+       style="position:absolute; width:0; height:0; pointer-events:none">
+    <defs>
+      <filter id="goo"
+              filterUnits="userSpaceOnUse"
+              x="-25%" y="-25%" width="150%" height="150%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+        <feColorMatrix in="blur" mode="matrix"
+                       values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10"
+                       result="goo"/>
+        <feBlend in="SourceGraphic" in2="goo"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- your blobs, gloss, save-the-date, and text -->
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
 
   <div class="gloss"></div>
-
   <div class="save-date">save the date</div>
 
   <div class="text-container">
