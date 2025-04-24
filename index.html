@@ -70,6 +70,9 @@
     #ff4500 0%,   /* bright orange core */
     #b22222 70%   /* deep red edge */
   );
+    top: 20%; left: 20%;
+  animation: move1 40s ease-in-out infinite;
+  wobble 10s ease-in-out infinite;
 }
 
 .blob2 {
@@ -78,6 +81,9 @@
     #ff8c00 0%,   /* medium orange core */
     #ff4500 70%   /* bright orange edge */
   );
+    top: 25%; left: 65%;
+  animation: move2 60s ease-in-out infinite;
+    wobble 10s ease-in-out infinite;
 }
 
 .blob3 {
@@ -86,6 +92,9 @@
     #ffa07a 0%,   /* light salmon core */
     #ff6347 70%   /* tomato red edge */
   );
+    top: 67%; left: 80%;
+  animation: move3 80s ease-in-out infinite;
+  wobble 10s ease-in-out infinite;
 }
 
 
@@ -113,7 +122,14 @@
   75%  { transform: translate( 15vw,-10vh) scale(1.05,0.95); }
   100% { transform: translate(  0,    0) scale(1,1); }
 }
-
+    
+@keyframes wobble {
+  0%,100% { transform: scale(1,1) translate(0,0); }
+  25%      { transform: scale(1.02,0.98) translate(2px,-2px); }
+  50%      { transform: scale(0.98,1.02) translate(-2px,2px); }
+  75%      { transform: scale(1.01,0.99) translate(1px,1px); }
+}
+    
     /* two star-field layers, twinkling */
     body::before,
     body::after {
